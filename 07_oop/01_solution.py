@@ -226,7 +226,7 @@ class ElectricCar(Car):
 
 myCar = Car("Toyota", "Corolla")
 myCar.model = "Camry" # this will work as model is not a private attribute, but we want to make it read only so we will use property decorator to make it read only
-print(myCar.model) # this will work as model is not a private attribute, but we want to make it read only so we will use property decorator to make it read only, so we can use the getter method to access the model attribute
-print(myCar.brand) # this will not work as brand is a private attribute and we have a getter method for it, so we can use that getter method to access the brand attribute
+print(myCar.model + ".") # this will work as model is not a private attribute, but we want to make it read only so we will use property decorator to make it read only, so we can use the getter method to access the model attribute
+# print(myCar.brand) # this will not work as brand is a private attribute and we have a getter method for it, so we can use that getter method to access the brand attribute
 print(myCar.get_brand())
-print(myCar.model())
+# print(myCar.model())
