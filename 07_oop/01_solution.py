@@ -190,6 +190,95 @@
 # Property Decorators
 # Problem: Use a property decorator in the Car class to make the model attribute read-only.
 
+# class Car:
+#     total_cars = 0
+
+#     def __init__(self, brand, model):
+#         self.__brand = brand
+#         self.__model = model
+#         Car.total_cars += 1
+
+#     def get_brand(self):
+#         return self.__brand
+    
+#     def full_name(self):
+#         return f"{self.__brand} {self.__model}"
+    
+#     def fuel_type(self):
+#         return "Petrol or Diesel"
+    
+#     @staticmethod
+#     def general_description():
+#         return "A car is a means of transport"
+    
+#     @property
+#     def model(self):
+#         return self.__model
+    
+
+# #ElectricCar class 
+# class ElectricCar(Car):
+#     def __init__(self, brand, model, battery_size):
+#         super().__init__(brand, model)
+#         self.battery_size = battery_size
+
+#     def fuel_type(self):
+#         return "Electricity"
+
+# myCar = Car("Toyota", "Corolla")
+
+# myCar.model = "Camry" 
+# here we have created a new instance variable called model which is different from the original model variable which is a private attribute, so we have two model variables now one is the original model variable which is a private attribute and the other one is the new instance variable which we created by assigning a new value to it, so when we print myCar.model it will give us the value of the new instance variable which is "Camry" instead of the original model value which is "Corolla", and if we have used property decorator to make the model variable read only, then we would not be able to create a new instance variable with the same name and we would get an error if we try to assign a new value to it, so we can use property decorator to make the model variable read only and then we can access it like a normal attribute without calling it as a method, 
+# BUT it wont create a new instance variable as we have used property decorator to make it read only and it will throw and error, but if we wouldnt have used property decorator then it would have created a new instance variable
+
+# print(myCar.model) 
+# this will work because we have used property decorator to make the model variable read only, so we can access it like a normal attribute without calling it as a method, but if we try to assign a new value to it, we will get an error because it is read only now
+
+# Class Inheritance and isinstance() Function
+# Problem: Demonstrate the use of isinstance() to check if my_tesla is an instance of Car
+
+# class Car:
+#     total_cars = 0
+
+#     def __init__(self, brand, model):
+#         self.__brand = brand
+#         self.__model = model
+#         Car.total_cars += 1
+
+#     def get_brand(self):
+#         return self.__brand
+    
+#     def full_name(self):
+#         return f"{self.__brand} {self.__model}"
+    
+#     def fuel_type(self):
+#         return "Petrol or Diesel"
+    
+#     @staticmethod
+#     def general_description():
+#         return "A car is a means of transport"
+    
+#     @property
+#     def model(self):
+#         return self.__model
+    
+
+# #ElectricCar class 
+# class ElectricCar(Car):
+#     def __init__(self, brand, model, battery_size):
+#         super().__init__(brand, model)
+#         self.battery_size = battery_size
+
+#     def fuel_type(self):
+#         return "Electricity"
+
+# my_tesla = ElectricCar("Tesla", "Model S", "85kWh")
+# print(isinstance(my_tesla, Car))
+# print(isinstance(my_tesla, ElectricCar))
+
+# 10. Multiple Inheritance
+# Problem: Create two classes Battery and Engine, and let the ElectricCar class inherit from both, demonstrating multiple inheritance.
+
 class Car:
     total_cars = 0
 
@@ -214,24 +303,20 @@ class Car:
     @property
     def model(self):
         return self.__model
-    
 
-#ElectricCar class 
-class ElectricCar(Car):
-    def __init__(self, brand, model, battery_size):
-        super().__init__(brand, model)
-        self.battery_size = battery_size
 
-    def fuel_type(self):
-        return "Electricity"
+class Battery:
+    def battery_info(self):
+        return "This is a battery class"
 
-myCar = Car("Toyota", "Corolla")
+class Engine:
+    def engine_info(self):
+        return "This is an engine info"
 
-# myCar.model = "Camry" 
-# here we have created a new instance variable called model which is different from the original model variable which is a private attribute, so we have two model variables now one is the original model variable which is a private attribute and the other one is the new instance variable which we created by assigning a new value to it, so when we print myCar.model it will give us the value of the new instance variable which is "Camry" instead of the original model value which is "Corolla", and if we have used property decorator to make the model variable read only, then we would not be able to create a new instance variable with the same name and we would get an error if we try to assign a new value to it, so we can use property decorator to make the model variable read only and then we can access it like a normal attribute without calling it as a method, 
-# BUT it wont create a new instance variable as we have used property decorator to make it read only and it will throw and error, but if we wouldnt have used property decorator then it would have created a new instance variable
+class ElectricCar(Battery, Engine, Car):
+    pass
 
-# print(myCar.model + ".") 
-# here we overwrote the model variable with a new value, but we want to make it read only so we will use property decorator to make it read only
-
-print(myCar.model) # this will work because we have used property decorator to make the model variable read only, so we can access it like a normal attribute without calling it as a method, but if we try to assign a new value to it, we will get an error because it is read only now
+my_new_tesla = ElectricCar("Tesla", "Model X")
+print(my_new_tesla.engine_info())
+print(my_new_tesla.battery_info())
+print(my_new_tesla.full_name())
