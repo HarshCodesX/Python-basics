@@ -211,6 +211,7 @@ class Car:
     def general_description():
         return "A car is a means of transport"
     
+    @property
     def model(self):
         return self.__model
     
@@ -225,8 +226,15 @@ class ElectricCar(Car):
         return "Electricity"
 
 myCar = Car("Toyota", "Corolla")
-myCar.model = "Camry" # this will work as model is not a private attribute, but we want to make it read only so we will use property decorator to make it read only
-print(myCar.model + ".") # this will work as model is not a private attribute, but we want to make it read only so we will use property decorator to make it read only, so we can use the getter method to access the model attribute
+
+myCar.model = "Camry" # here we have created a new instance variable called model which is different from the original model variable which is a private attribute, so we have two model variables now one is the original model variable which is a private attribute and the other one is the new instance variable which we created by assigning a new value to it, so when we print myCar.model it will give us the value of the new instance variable which is "Camry" instead of the original model value which is "Corolla"
+
+print(myCar.model + ".") # here we overwrote the model variable with a new value, but we want to make it read only so we will use property decorator to make it read only
+
 # print(myCar.brand) # this will not work as brand is a private attribute and we have a getter method for it, so we can use that getter method to access the brand attribute
+
 print(myCar.get_brand())
-# print(myCar.model())
+
+# print(myCar.model()) # this will not work as model is a property that we overwrote with a new value, so we need to use the property decorator to make it read only and then we can access it like a normal attribute without calling it as a method
+
+# also if we create the model function as decorator, then we have to call that method as myCar.model instead of myCar.model() as decorator make this variable to behave like a variable instead like a method
