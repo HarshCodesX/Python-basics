@@ -9,7 +9,6 @@ def timer(func):
         result = func(*args, **kwargs)
         end = time.time()
         print(f"{func.__name__} ran in {end - start} time")
-        return result
     return wrapper
 
 @timer # instead of calling the function directly, we are passing it to the decorator
