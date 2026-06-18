@@ -12,7 +12,8 @@ def save_data_helper(videos):
         json.dump(videos, file)
 
 def list_all_videos(videos):
-    pass
+    for index, video in enumerate(videos, start=1):
+        print(f"{index}.")
 
 def add_video(videos):
     pass
