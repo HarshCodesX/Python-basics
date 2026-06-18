@@ -16,7 +16,10 @@ def list_all_videos(videos):
         print(f"{index}.")
 
 def add_video(videos):
-    pass
+    name = input("Enter video name: ")
+    time = input("Enter video time: ")
+    videos.append({'name': name, 'time': time})
+    save_data_helper(videos)
 
 def update_video(videos):
     pass
@@ -33,6 +36,7 @@ def main():
         print("3. Update a youtube video details ")
         print("4. Delete a youtube video ")
         print("5. Exit the app ")
+        print(videos)
 
         choice = input("Enter your choice: ")
         match choice:
