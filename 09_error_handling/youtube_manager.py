@@ -43,6 +43,7 @@ def main():
         print("4. Delete a youtube video ")
         print("5. Exit the app ")
         # print(videos)
+        # streak
 
         choice = input("Enter your choice: ")
         match choice:
